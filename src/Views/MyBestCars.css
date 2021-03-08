@@ -53,7 +53,7 @@
 
   }
 
-  .my-player{
+  .my-car{
 
     text-align: left;
     margin: 10px;
@@ -100,12 +100,12 @@
 
   }
 
-  .playerDiv{
+  .carDiv{
     display: flex;
     align-items: center;
   }
  
-  .playerEditButton{
+  .carEditButton{
     width: 100%;
   }
 

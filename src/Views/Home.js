@@ -7,19 +7,19 @@ class Home extends Component {
       <div className="main ">
         <section className="main-header main-bg">
           {/* <header role="banner">
-            <h1>Greatest Players in Sports</h1>
+            <h1>Greatest Cars by class</h1>
           </header> */}
-          </section>
-          <section className="intro">
-            <p className="s-style">There is always debate in many circles regarding who is the greatest player of all time in any particular sport. GOATS helps you to end the debate. You can store your favorite players according to six core statistics. Speak with stats that matter.</p>
           </section>
           <section className="container-box">
             <h3>
-              <a href='/players' className="no-link">View The Top 5 Players in Each Sport</a>
+              <a href='/cars' className="no-link">Our Highest Rated Sports Cars</a>
             </h3>
           </section>
           <section className="container-box">
-            <h3><a href='/myplayers' className="no-link"> My top 5 players in Each Sport 💪</a></h3>
+            <h3><a href='/mycars' className="no-link">My top 5 rated vehicles</a></h3>
+          </section>
+          <section className="intro">
+            <p className="s-style">Help others find the perfect car by rating yours and other cars you're familiar with. We all have a need for variety in different aspects of our lives and that's why there are so many different brands. Cars are no different. We like different ones for different reasons, but is it subjective or is the car you like actually better? Let's find out.</p>
           </section>
         </div>
     );

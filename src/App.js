@@ -5,59 +5,59 @@ import ApiContext from './ApiContext';
 import './App.css';
 
 import Home from './Views/Home';
-import GreatestPlayers from "./Views/GreatestPlayers";
-import MyGreatPlayers from "./Views/MyGreatPlayers";
+import BestCars from "./Views/BestCars";
+import MyBestCars from "./Views/MyBestCars";
 import CreateList from "./Views/CreateList";
 
 class App extends Component {
   state = {
-    sports: []
+    carclass: []
   }
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/sports`)
+      fetch(`${config.API_ENDPOINT}/class`)
     ])
-      .then(([sportsResponse]) => {
-        if (!sportsResponse.ok) return sportsResponse.json().then(e => Promise.reject(e));
-        return Promise.all([sportsResponse.json()]);
+      .then(([classResponse]) => {
+        if (!classResponse.ok) return classResponse.json().then(e => Promise.reject(e));
+        return Promise.all([classResponse.json()]);
       })
-      .then(([sports]) => {
-        if (sports.length) {
-          this.setState({ sports })
+      .then(([carclass]) => {
+        if (carclass.length) {
+          this.setState({ carclass })
         }
-        console.log(sports, 'this is line 24 app.js')
+        console.log(carclass, 'this is line 24 app.js')
       })
       .catch((error) => { console.log({ error }) })
   }
 
-  handleAddSports = (sports) => {
+  handleAddCarclass = (carclass) => {
     this.setState({
-      sports: [...this.state.sports, sports]
+      carclass: [...this.state.carclass, carclass]
     })
   };
 
-  handleDeleteSports = (sportsId) => {
+  handleDeleteCarclass = (carclassId) => {
     this.setState({
-      sports: this.state.sports.filter((sport) => sport.id !== sportsId)
+      carclass: this.state.carclass.filter((car) => car.id !== carclassId)
     });
   };
 
-  handleUpdateSports = (updateSports) => {
-    const newUpdatedSports = this.state.sports.map((sport) =>
-      sport.id === updateSports.id ? updateSports : sport
+  handleUpdateCarclass = (updateCarclass) => {
+    const newUpdatedCarclass = this.state.carclass.map((car) =>
+      car.id === updateCarclass.id ? updateCarclass : car
     );
     this.setState({
-      sports: newUpdatedSports,
+      carclass: newUpdatedCarclass,
     })
   };
 
   render() {
     const value = {
-      sports: this.state.sports,
-      addSports: this.handleAddSports,
-      deleteSports: this.handleDeleteSports,
-      updateSports: this.handleUpdateSports,
+      carclass: this.state.carclass,
+      addCarclass: this.handleAddCarclass,
+      deleteCarclass: this.handleDeleteCarclass,
+      updateCarclass: this.handleUpdateCarclass,
     };
 
     return (
@@ -70,17 +70,17 @@ class App extends Component {
                   <a href="/">Home</a>
                 </div>
               </nav> */}
-              <a href="/" className="title">GOATS</a>
+              <a href="/" className="title">Autoclass</a>
             </header>
             <main className="main-container">
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/players" component={GreatestPlayers} />
-                <Route exact path="/myplayers" component={MyGreatPlayers} />
+                <Route exact path="/cars" component={BestCars} />
+                <Route exact path="/mycars" component={MyBestCars} />
                 <Route exact path="/createlist" component={CreateList} />
               </Switch>
             </main>
-            <footer className="app-footer">Dimitry A | <a href='https://github.com/dimitrycodes'>@dimitrycodes</a></footer>
+            <footer className="app-footer">Autoclass | <a href='https://github.com/dimitrycodes'>@dimitrycodes</a></footer>
           </Router>
         </div>
       </ApiContext.Provider>

@@ -6,15 +6,14 @@ const {config} = require('../config');
 class CreateList extends Component {
 
   initState = {
-    sports_id: '1',
-    sportsname: 'Soccer',
-    playername: '',
-    championshipsWon: '',
-    careerPointsScored: '',
-    careerAssistRanking: '',
-    mvpAwards: '',
-    yearsPlayed: '',
-    scoringEfficiency: ''
+    class_id: '1',
+    carclass: 'Sport',
+    makeandmodel: '',
+    comfort: '',
+    topspeed: '',
+    handling: '',
+    crashsafetyrating: '',
+    fueleconomy: ''
   }
 
   state = this.initState;
@@ -28,12 +27,11 @@ class CreateList extends Component {
     };
     // window.location.reload();
     console.log("requestOptions", requestOptions);
-    fetch(`${config.API_ENDPOINT}/sports`, requestOptions)
+    fetch(`${config.API_ENDPOINT}/class`, requestOptions)
       .then(response => {
         console.log("response==========>", response)
         response.json()
         console.log("What is state", this.initState);
-        //window.history.back('myplayers');
         //const updateOnSubmit = 
         this.setState(this.initState);
         this.forceUpdate();
@@ -47,24 +45,24 @@ class CreateList extends Component {
   render() {
     return (
       <>
-        <section className="add-player">
+        <section className="add-car">
           <form id="recordDream" onSubmit={this.handleSubmit} className="create-form">
             <div className="form-section">
-                <label htmlFor="Sport">Sport</label>
+                <label htmlFor="Class">Class</label>
               <select
                 type="text"
                 name="dream-title"
                 placeholder="Flying dream"
                 required
-                defaultValue="Soccer"
+                defaultValue="Sports"
                 onChange={(e) => {
                   console.log(e.target.value)
                   this.setState({
-                    sportsname: e.target.value,
+                    carclass: e.target.value,
                   })
                 }}
               >
-                <option value='Soccer'>Soccer</option>
+                <option value='Sports'>Sports</option>
                 {/* <option value='Football'>Football</option>
                 <option value='Basketball'>Basketball</option>
                 <option value='Hockey'>Hockey</option>
@@ -73,20 +71,20 @@ class CreateList extends Component {
             </div>
             <div className="form-section ">
 
-              <label htmlFor="dream-summary">Player's Name</label>
+              <label htmlFor="dream-summary">Make and Model</label>
               <input
                 name="dream-summary"
                 rows="15"
                 required
                 onChange={(e) => {
                   this.setState({
-                    playername: e.target.value,
+                    makeandmodel: e.target.value,
                   })
                 }}
               />
             </div>
             <div className="form-section">
-              <label htmlFor="hours-slept">Championships Won</label>
+              <label htmlFor="hours-slept">Comfort</label>
               <input
                 type="number"
                 name="hours-slept"
@@ -94,14 +92,14 @@ class CreateList extends Component {
                 required
                 onChange={(e) => {
                   this.setState({
-                    championshipsWon: e.target.value,
+                    comfort: e.target.value,
                   })
                 }}
               />
               </div>
 
 <div className="form-section">
-              <label htmlFor="hours-slept">MVP Awards</label>
+              <label htmlFor="hours-slept">Top Speed</label>
               <input
                 type="number"
                 name="hours-slept"
@@ -109,13 +107,13 @@ class CreateList extends Component {
                 required
                 onChange={(e) => {
                   this.setState({
-                    careerPointsScored: e.target.value,
+                    topspeed: e.target.value,
                   })
                 }}
               />
               </div>
               <div className="form-section">
-              <label htmlFor="hours-slept">Longevity/Years Played</label>
+              <label htmlFor="hours-slept">Handling</label>
               <input
                 type="number"
                 name="hours-slept"
@@ -123,13 +121,13 @@ class CreateList extends Component {
                 required
                 onChange={(e) => {
                   this.setState({
-                    careerAssistRanking: e.target.value,
+                    handling: e.target.value,
                   })
                 }}
               />
               </div>
               <div className="form-section">
-              <label htmlFor="hours-slept">All time Career Point</label>
+              <label htmlFor="hours-slept">Crash and Safety Rating</label>
               <input
                 type="text"
                 name="hours-slept"
@@ -137,13 +135,13 @@ class CreateList extends Component {
                 required
                 onChange={(e) => {
                   this.setState({
-                    mvpAwards: e.target.value,
+                    crashsafetyrating: e.target.value,
                   })
                 }}
               />
               </div>
               <div className="form-section">
-              <label htmlFor="hours-slept">All Time Career Assist</label>
+              <label htmlFor="hours-slept">Fuel Economy</label>
               <input
                 type="text"
                 name="hours-slept"
@@ -151,25 +149,12 @@ class CreateList extends Component {
                 required
                 onChange={(e) => {
                   this.setState({
-                    yearsPlayed: e.target.value,
+                    fueleconomy: e.target.value,
                   })
                 }}
               />
               </div>
-              <div className="form-section">
-              <label htmlFor="hours-slept">Scoring Efficiency</label>
-              <input
-                type="text"
-                name="hours-slept"
-                id="hours-slept"
-                required
-                onChange={(e) => {
-                  this.setState({
-                    scoringEfficiency: e.target.value,
-                  })
-                }}
-              />
-              </div>
+              
               <div className="form-submit"> 
               <button type="submit" >Submit</button>
               <button type="reset">Reset</button>

@@ -1,12 +1,12 @@
 # Goats
 
-Live App: https://goats-client.vercel.app/
+Live App: 
 
-Server Side Repo: https://github.com/dimitrycodes/goats-app 
+Server Side Repo: https://github.com/dimitrycodes/autoclass-api
 
-Goats is an app that enables you to store your top players in a sport(only one sport available for now) according to 6 key statistics. Those statistics will help you make the case for which player is the greatest player of all time. You can create your list, store their statics, and update them if the player is still playing or if you made an error or if you decide that the player doesn't belong in the list because another player is better. 
+Autoclass allows you to store your top 5 cars for a particular class according to 5 performance metrics. The performance metrics will help you ranks cars that you have owned or have knowledge of. You can create your car list, store their metrics, and update them as new cars are put on the market or if you made an error. 
 
-Stay tuned! More to come soon on GOATS!
+Stay tuned for updates to Autoclass
 
 Stack this app was created using: React, Javascript, HTML5, CSS3, React Router, and Git
 

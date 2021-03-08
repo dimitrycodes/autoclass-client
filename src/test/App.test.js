@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import App from '../App';
 import CreateList from '../Views/CreateList';
 import EditList from '../Views/EditList';
-import GreatestPlayers from '../Views/GreatestPlayers';
+import BestCars from '../Views/BestCars';
 import Home from '../Views/Home';
-import MyGreatPlayers from '../Views/MyGreatPlayers';
+import MyBestCars from '../Views/MyBestCars';
 
 // test('renders learn react link', () => {
 //   render(<App />);
@@ -38,7 +38,7 @@ describe('All Components', () => {
     const div = document.createElement('div');
   
     
-    ReactDOM.render(<GreatestPlayers />, div);
+    ReactDOM.render(<BestCars />, div);
   
    
     ReactDOM.unmountComponentAtNode(div);
@@ -72,7 +72,7 @@ describe('All Components', () => {
     const div = document.createElement('div');
   
     
-    ReactDOM.render(<MyGreatPlayers />, div);
+    ReactDOM.render(<MyBestCars />, div);
   
     ReactDOM.unmountComponentAtNode(div);
   });

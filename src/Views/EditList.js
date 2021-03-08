@@ -7,15 +7,14 @@ class EditList extends Component {
  
   initState = {
     id: this.props.info.id,
-    sports_id: this.props.info.sports_id,
-    sportsname: this.props.info.sportsname,
-    playername: this.props.info.playername,
-    championshipswon: this.props.info.championshipswon,
-    careerpointsscored: this.props.info.careerpointsscored,
-    careerassistranking: this.props.info.careerassistranking,
-    mvpawards: this.props.info.mvpawards,
-    yearsplayed: this.props.info.yearsplayed,
-    scoringefficiency:this.props.info.scoringefficiency
+    class_id: this.props.info.class_id,
+    carclass: this.props.info.carclass,
+    makeandmodel: this.props.info.makeandmodel,
+    comfort: this.props.info.comfort,
+    topspeed: this.props.info.topspeed,
+    handling: this.props.info.handling,
+    crashsafetyrating: this.props.info.crashsafetyrating,
+    fueleconomy: this.props.info.fueleconomy
   }
  
   state = this.initState;
@@ -29,12 +28,11 @@ class EditList extends Component {
     };
     // window.location.reload();
     console.log("requestOptions", requestOptions);
-    fetch(`${config.API_ENDPOINT}/sports`, requestOptions)
+    fetch(`${config.API_ENDPOINT}/class`, requestOptions)
       .then(response => {
         console.log("response==========>", response)
         response.json()
         console.log("What is state", this.initState);
-        //window.history.back('myplayers');
         //const updateOnSubmit = 
         this.setState(this.initState);
         this.render();
@@ -51,11 +49,11 @@ class EditList extends Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.state)
       };
-      //const url = `http://localhost:8000/sports/${this.state.id}`;
-      const url2 = `${config.API_ENDPOINT}/sports/${this.state.id}`;
+      //const url = `http://localhost:8000/class/${this.state.id}`;
+      const url2 = `${config.API_ENDPOINT}/class/${this.state.id}`;
  
       fetch(url2, requestOptions).then(res=>res.json).then(console.log);
-      this.props.changePlayers(this.state);
+      this.props.changeCars(this.state);
       this.props.changeInfo(this.state);
 
   }
@@ -63,24 +61,24 @@ class EditList extends Component {
       console.log(this.props.info)
     return (
       <>
-        <section className="add-player">
+        <section className="add-car">
           <form id="recordDream" onSubmit={this.handleSubmit} className="create-form">
             <div className="form-section">
-                <label htmlFor="Sport">Sport</label>
+                <label htmlFor="Class">Class</label>
               <select
                 type="text"
                 name="dream-title"
                 placeholder="Flying dream"
                 required
-                defaultValue="Soccer"
+                defaultValue="Sport"
                 onChange={(e) => {
                   console.log(e.target.value)
                   this.setState({
-                    sportsname: e.target.value,
+                    carclass: e.target.value,
                   })
                 }}
               >
-                <option value='Soccer'>Soccer</option>
+                <option value='Sport'>Sport</option>
                 {/* <option value='Football'>Football</option>
                 <option value='Basketball'>Basketball</option>
                 <option value='Hockey'>Hockey</option>
@@ -88,113 +86,99 @@ class EditList extends Component {
               </select>
             </div>
             <div className="form-section ">
- 
-              <label htmlFor="dream-summary">Player's Name</label>
+
+              <label htmlFor="dream-summary">Make and Model</label>
               <input
-              value={this.state.playername}
+                value={(this.state.makeandmodel)}
                 name="dream-summary"
                 rows="15"
                 required
                 onChange={(e) => {
                   this.setState({
-                    playername: e.target.value,
+                    makeandmodel: e.target.value,
                   })
                 }}
               />
             </div>
             <div className="form-section">
-              <label htmlFor="hours-slept">Championships Won</label>
+              <label htmlFor="hours-slept">Comfort</label>
               <input
-              value={(this.state.championshipswon)}
+                value={(this.state.comfort)}
                 type="number"
                 name="hours-slept"
                 id="hours-slept"
                 required
                 onChange={(e) => {
                   this.setState({
-                    championshipswon: e.target.value,
+                    comfort: e.target.value,
                   })
                 }}
               />
               </div>
- 
+
 <div className="form-section">
-              <label htmlFor="hours-slept">MVP Awards</label>
+              <label htmlFor="hours-slept">Top Speed</label>
               <input
-              value={(this.state.mvpawards)}
+                value={(this.state.topspeed)}
                 type="number"
                 name="hours-slept"
                 id="hours-slept"
                 required
                 onChange={(e) => {
                   this.setState({
-                    mvpawards: e.target.value,
+                    topspeed: e.target.value,
                   })
                 }}
               />
               </div>
               <div className="form-section">
-              <label htmlFor="hours-slept">Longevity/Years Played</label>
+              <label htmlFor="hours-slept">Handling</label>
               <input
-              value={(this.state.yearsplayed)}
+                value={(this.state.handling)}
                 type="number"
                 name="hours-slept"
                 id="hours-slept"
                 required
                 onChange={(e) => {
                   this.setState({
-                    yearsplayed: e.target.value,
+                    handling: e.target.value,
                   })
                 }}
               />
               </div>
               <div className="form-section">
-              <label htmlFor="hours-slept">All time Career Point</label>
+              <label htmlFor="hours-slept">Crash and Safety Rating</label>
               <input
-              value={(this.state.careerpointsscored)}
+                value={(this.state.crashsafetyrating)}
                 type="text"
                 name="hours-slept"
                 id="hours-slept"
                 required
                 onChange={(e) => {
                   this.setState({
-                    careerpointsscored: e.target.value,
+                    crashsafetyrating: e.target.value,
                   })
                 }}
               />
               </div>
               <div className="form-section">
-              <label htmlFor="hours-slept">All Time Career Assist</label>
+              <label htmlFor="hours-slept">Fuel Economy</label>
               <input
-              value={(this.state.careerassistranking)}
+                value={(this.state.fueleconomy)}
                 type="text"
                 name="hours-slept"
                 id="hours-slept"
                 required
                 onChange={(e) => {
                   this.setState({
-                    careerassistranking: e.target.value,
+                    fueleconomy: e.target.value,
                   })
                 }}
               />
               </div>
-              <div className="form-section">
-              <label htmlFor="hours-slept">Scoring Efficiency</label>
-              <input
-              value={(this.state.scoringefficiency)}
-                type="text"
-                name="hours-slept"
-                id="hours-slept"
-                required
-                onChange={(e) => {
-                  this.setState({
-                    scoringefficiency: e.target.value,
-                  })
-                }}
-              />
-              </div>
+              
               <div className="form-submit"> 
-              <a href="/myplayer">
+              <a href="/mycar">
               <button type="submit" onClick={()=>{this.updateUser();this.props.editing();}} >Submit</button>
               </a>
               <button type="reset" onClick={()=>{this.props.editing();}}>Reset</button>
