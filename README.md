@@ -1,4 +1,4 @@
-# Goats
+# Autoclass
 
 Live App: https://autoclass-client.vercel.app
 
